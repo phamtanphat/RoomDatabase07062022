@@ -11,6 +11,8 @@ import com.example.roomdatabase07062022.data.local.entities.ToDoEntity;
 
 import java.util.List;
 
+import io.reactivex.rxjava3.core.Observable;
+
 /**
  * Created by pphat on 8/18/2022.
  */
@@ -21,11 +23,11 @@ public class TodoRepository {
         toDoDao = ToDoDatabase.getInstance(context).getTodoDao();
     }
 
-    public LiveData<List<ToDoEntity>> getToDoList() {
+    public Observable<List<ToDoEntity>> getToDoList() {
         return toDoDao.getTodoList();
     }
 
-    public LiveData<List<PriorityEntity>> getPriority() {
+    public Observable<List<PriorityEntity>> getPriority() {
         return toDoDao.getPriority();
     }
 

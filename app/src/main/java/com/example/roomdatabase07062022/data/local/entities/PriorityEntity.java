@@ -21,8 +21,7 @@ public class PriorityEntity {
     @ColumnInfo(name = "priority")
     private PriorityEnum priorityEnum;
 
-    public PriorityEntity(long id, PriorityEnum priorityEnum) {
-        this.id = id;
+    public PriorityEntity(PriorityEnum priorityEnum) {
         this.priorityEnum = priorityEnum;
     }
 

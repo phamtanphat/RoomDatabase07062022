@@ -12,6 +12,10 @@ import com.example.roomdatabase07062022.data.repositories.TodoRepository;
 
 import java.util.List;
 
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
+import io.reactivex.rxjava3.functions.Consumer;
+import io.reactivex.rxjava3.schedulers.Schedulers;
+
 /**
  * Created by pphat on 8/18/2022.
  */
@@ -33,10 +37,28 @@ public class MainViewModel extends ViewModel {
     }
 
     public void queryTodoList() {
-        todoListMutable.setValue(todoRepository.getToDoList().getValue());
+        todoRepository
+                .getToDoList()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(toDoEntities -> todoListMutable.setValue(toDoEntities));
+
     }
 
     public void queryPriorityList() {
-        priorityListMutable.setValue(todoRepository.getPriority().getValue());
+        todoRepository
+                .getPriority()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(priorityEntities -> priorityListMutable.setValue(priorityEntities));
+    }
+
+    public void insertPriority(PriorityEntity priorityEntity) {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                todoRepository.insertPriority(priorityEntity);
+            }
+        }).start();
     }
 }

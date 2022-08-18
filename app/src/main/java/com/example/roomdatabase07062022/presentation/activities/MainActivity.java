@@ -12,6 +12,7 @@ import android.util.Log;
 import com.example.roomdatabase07062022.R;
 import com.example.roomdatabase07062022.data.local.entities.PriorityEntity;
 import com.example.roomdatabase07062022.data.local.entities.ToDoEntity;
+import com.example.roomdatabase07062022.data.model.PriorityEnum;
 import com.example.roomdatabase07062022.data.repositories.TodoRepository;
 import com.example.roomdatabase07062022.presentation.viewmodels.MainViewModel;
 
@@ -36,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
         mainViewModel.getPriorityEntityListLiveData().observe(this, new Observer<List<PriorityEntity>>() {
             @Override
             public void onChanged(List<PriorityEntity> priorityEntities) {
-                if (priorityEntities.size() > 0) {
+                if (priorityEntities != null && priorityEntities.size() > 0) {
                     for (PriorityEntity element: priorityEntities) {
                         Log.d("BBB", element.toString());
                     }
@@ -47,12 +48,17 @@ public class MainActivity extends AppCompatActivity {
         mainViewModel.getTodoListLiveData().observe(this, new Observer<List<ToDoEntity>>() {
             @Override
             public void onChanged(List<ToDoEntity> toDoEntities) {
-                if (toDoEntities.size() > 0) {
+                if (toDoEntities != null && toDoEntities.size() > 0) {
                     for (ToDoEntity element: toDoEntities) {
                         Log.d("BBB", element.toString());
                     }
                 }
             }
         });
+
+        mainViewModel.queryTodoList();
+        mainViewModel.queryPriorityList();
+
+        mainViewModel.insertPriority(new PriorityEntity(PriorityEnum.HIGH));
     }
 }

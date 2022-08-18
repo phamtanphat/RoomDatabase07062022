@@ -11,6 +11,8 @@ import com.example.roomdatabase07062022.data.local.entities.ToDoEntity;
 
 import java.util.List;
 
+import io.reactivex.rxjava3.core.Observable;
+
 /**
  * Created by pphat on 8/18/2022.
  */
@@ -19,10 +21,10 @@ import java.util.List;
 public interface ToDoDao {
 
     @Query("Select * from to_do")
-    LiveData<List<ToDoEntity>> getTodoList();
+    Observable<List<ToDoEntity>> getTodoList();
 
     @Query("Select * from priority")
-    LiveData<List<PriorityEntity>> getPriority();
+    Observable<List<PriorityEntity>> getPriority();
 
     @Insert(entity = ToDoEntity.class)
     void insertTodo(ToDoEntity toDoEntity);
