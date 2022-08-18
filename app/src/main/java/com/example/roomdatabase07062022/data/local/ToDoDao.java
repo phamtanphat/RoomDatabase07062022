@@ -25,8 +25,8 @@ public interface ToDoDao {
     LiveData<List<PriorityEntity>> getPriority();
 
     @Insert(entity = ToDoEntity.class)
-    LiveData<Long> insertTodo(ToDoEntity toDoEntity);
+    void insertTodo(ToDoEntity toDoEntity);
 
     @Insert(entity = PriorityEntity.class)
-    LiveData<Long> insertPriority(PriorityEntity priorityEntity);
+    void insertPriority(PriorityEntity priorityEntity);
 }

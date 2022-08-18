@@ -29,11 +29,11 @@ public class TodoRepository {
         return toDoDao.getPriority();
     }
 
-    public LiveData<Long> insertTodo(ToDoEntity toDoEntity) {
-        return toDoDao.insertTodo(toDoEntity);
+    public void insertTodo(ToDoEntity toDoEntity) {
+        toDoDao.insertTodo(toDoEntity);
     }
 
-    public LiveData<Long> insertPriority(PriorityEntity priorityEntity) {
-        return toDoDao.insertPriority(priorityEntity);
+    public void insertPriority(PriorityEntity priorityEntity) {
+        toDoDao.insertPriority(priorityEntity);
     }
 }
