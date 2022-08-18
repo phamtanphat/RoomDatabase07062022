@@ -1,8 +1,10 @@
-package com.example.roomdatabase07062022;
+package com.example.roomdatabase07062022.presentation.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.example.roomdatabase07062022.R;
 
 public class MainActivity extends AppCompatActivity {
 

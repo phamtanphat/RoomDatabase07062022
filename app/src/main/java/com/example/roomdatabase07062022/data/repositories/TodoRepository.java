@@ -21,19 +21,19 @@ public class TodoRepository {
         toDoDao = ToDoDatabase.getInstance(context).getTodoDao();
     }
 
-    LiveData<List<ToDoEntity>> getToDoList() {
+    public LiveData<List<ToDoEntity>> getToDoList() {
         return toDoDao.getTodoList();
     }
 
-    LiveData<List<PriorityEntity>> getPriority() {
+    public LiveData<List<PriorityEntity>> getPriority() {
         return toDoDao.getPriority();
     }
 
-    LiveData<Long> insertTodo(ToDoEntity toDoEntity) {
+    public LiveData<Long> insertTodo(ToDoEntity toDoEntity) {
         return toDoDao.insertTodo(toDoEntity);
     }
 
-    LiveData<Long> insertPriority(PriorityEntity priorityEntity) {
+    public LiveData<Long> insertPriority(PriorityEntity priorityEntity) {
         return toDoDao.insertPriority(priorityEntity);
     }
 }
