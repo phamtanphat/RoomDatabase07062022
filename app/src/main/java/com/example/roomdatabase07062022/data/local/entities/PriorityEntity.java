@@ -2,6 +2,7 @@ package com.example.roomdatabase07062022.data.local.entities;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 import androidx.room.TypeConverter;
 import androidx.room.TypeConverters;
@@ -19,5 +20,37 @@ public class PriorityEntity {
     @TypeConverters(PriorityConverter.class)
     @ColumnInfo(name = "priority")
     private PriorityEnum priorityEnum;
+
+    public PriorityEntity(long id, PriorityEnum priorityEnum) {
+        this.id = id;
+        this.priorityEnum = priorityEnum;
+    }
+
+    @Ignore
+    public PriorityEntity() { }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public PriorityEnum getPriorityEnum() {
+        return priorityEnum;
+    }
+
+    public void setPriorityEnum(PriorityEnum priorityEnum) {
+        this.priorityEnum = priorityEnum;
+    }
+
+    @Override
+    public String toString() {
+        return "PriorityEntity{" +
+                "id=" + id +
+                ", priorityEnum=" + priorityEnum +
+                '}';
+    }
 }
 
