@@ -29,18 +29,16 @@ public class ToDoEntity {
     @ColumnInfo(name = "create_at")
     private long createAt;
 
-    @ColumnInfo(name = "is_done")
+    @ColumnInfo(name = "is_done", defaultValue = "0")
     private boolean isDone;
 
     @ColumnInfo(index = true, name = "id_priority")
     private long idPriority;
 
-    public ToDoEntity(long id, String title, String description, long createAt, boolean isDone, long idPriority) {
-        this.id = id;
+    public ToDoEntity(String title, String description, long createAt, long idPriority) {
         this.title = title;
         this.description = description;
         this.createAt = createAt;
-        this.isDone = isDone;
         this.idPriority = idPriority;
     }
 

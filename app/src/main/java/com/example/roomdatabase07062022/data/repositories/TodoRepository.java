@@ -8,10 +8,12 @@ import com.example.roomdatabase07062022.data.local.ToDoDao;
 import com.example.roomdatabase07062022.data.local.ToDoDatabase;
 import com.example.roomdatabase07062022.data.local.entities.PriorityEntity;
 import com.example.roomdatabase07062022.data.local.entities.ToDoEntity;
+import com.example.roomdatabase07062022.data.local.entities.TodoAndPriorityEntity;
 
 import java.util.List;
 
 import io.reactivex.rxjava3.core.Observable;
+import io.reactivex.rxjava3.core.Single;
 
 /**
  * Created by pphat on 8/18/2022.
@@ -31,11 +33,14 @@ public class TodoRepository {
         return toDoDao.getPriority();
     }
 
-    public void insertTodo(ToDoEntity toDoEntity) {
-        toDoDao.insertTodo(toDoEntity);
+    public Single<Long> insertTodo(ToDoEntity toDoEntity) {
+        return toDoDao.insertTodo(toDoEntity);
     }
 
-    public void insertPriority(PriorityEntity priorityEntity) {
-        toDoDao.insertPriority(priorityEntity);
+    public Single<Long> insertPriority(PriorityEntity priorityEntity) {
+        return toDoDao.insertPriority(priorityEntity);
+    }
+    public Observable<List<TodoAndPriorityEntity>> getTodoAndPriority() {
+        return toDoDao.getTodoAndPriority();
     }
 }

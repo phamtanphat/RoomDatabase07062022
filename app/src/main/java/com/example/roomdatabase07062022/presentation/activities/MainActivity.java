@@ -7,11 +7,13 @@ import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 
 import com.example.roomdatabase07062022.R;
 import com.example.roomdatabase07062022.data.local.entities.PriorityEntity;
 import com.example.roomdatabase07062022.data.local.entities.ToDoEntity;
+import com.example.roomdatabase07062022.data.local.entities.TodoAndPriorityEntity;
 import com.example.roomdatabase07062022.data.model.PriorityEnum;
 import com.example.roomdatabase07062022.data.repositories.TodoRepository;
 import com.example.roomdatabase07062022.presentation.viewmodels.MainViewModel;
@@ -56,9 +58,29 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        mainViewModel.queryTodoList();
-        mainViewModel.queryPriorityList();
+//        mainViewModel.getTodoAndPriorityLiveData().observe(this, new Observer<List<TodoAndPriorityEntity>>() {
+//            @Override
+//            public void onChanged(List<TodoAndPriorityEntity> todoAndPriorityEntities) {
+//                if (todoAndPriorityEntities != null && todoAndPriorityEntities.size() > 0) {
+//                    for (TodoAndPriorityEntity element: todoAndPriorityEntities) {
+//                        Log.d("BBB", element.toString());
+//                    }
+//                }
+//            }
+//        });
+//
+//        mainViewModel.queryTodoList();
+//        mainViewModel.queryPriorityList();
+//        mainViewModel.queryTodoAndPriority();
+//        mainViewModel.disposeData();
 
-        mainViewModel.insertPriority(new PriorityEntity(PriorityEnum.HIGH));
+//         mainViewModel.insertPriority(new PriorityEntity(PriorityEnum.MEDIUM));
+//        mainViewModel.insertTodo(new ToDoEntity("Todo 1","Do something 1", System.currentTimeMillis(), 1));
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
     }
 }

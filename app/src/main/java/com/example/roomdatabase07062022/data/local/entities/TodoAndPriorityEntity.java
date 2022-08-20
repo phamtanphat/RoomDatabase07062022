@@ -15,4 +15,12 @@ public class TodoAndPriorityEntity {
             entityColumn = "id_priority"
     )
     public ToDoEntity toDoEntity;
+
+    @Override
+    public String toString() {
+        return "TodoAndPriorityEntity{" +
+                "priorityEntity=" + priorityEntity +
+                ", toDoEntity=" + toDoEntity +
+                '}';
+    }
 }
