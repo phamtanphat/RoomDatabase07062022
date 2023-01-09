@@ -1,5 +1,7 @@
 package com.example.roomdatabase07062022.data.local;
 
+import android.database.Cursor;
+
 import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Insert;
